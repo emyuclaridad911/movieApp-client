@@ -12,7 +12,6 @@ const email = ref("");
 const password = ref("");
 const isEnabled = ref(false);
 
-// Enable button only when all fields are filled
 watch([username, email, password], ([u, e, p]) => {
   isEnabled.value = u !== "" && e !== "" && p !== "";
 });

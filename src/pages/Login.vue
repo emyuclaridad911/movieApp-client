@@ -13,12 +13,10 @@ const email = ref("");
 const password = ref("");
 const isEnabled = ref(false);
 
-// Enable login button only when fields are filled
 watch([email, password], ([e, p]) => {
   isEnabled.value = e !== "" && p !== "";
 });
 
-// Redirect if already logged in
 onBeforeMount(() => {
   if (global.user.token) {
     router.push({ path: "/" });

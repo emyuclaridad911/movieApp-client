@@ -12,7 +12,6 @@ const newComment = ref("");
 const global = useGlobalStore();
 const notyf = new Notyf();
 
-// Fetch movie details
 async function fetchMovie() {
   try {
     const res = await api.get(`/movies/getMovie/${movieId}`);
@@ -23,7 +22,6 @@ async function fetchMovie() {
   }
 }
 
-// Add comment
 async function addComment() {
   if (!newComment.value.trim()) return;
 

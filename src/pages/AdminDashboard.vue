@@ -8,7 +8,6 @@ const movies = ref([]);
 const showAddForm = ref(false);
 const showUpdateForm = ref(false);
 
-// Form fields for adding a new movie
 const newMovie = reactive({
   title: "",
   director: "",
@@ -17,7 +16,6 @@ const newMovie = reactive({
   genre: ""
 });
 
-// Form fields for updating a movie
 const updateMovieData = reactive({
   _id: "",
   title: "",
@@ -27,7 +25,6 @@ const updateMovieData = reactive({
   genre: ""
 });
 
-// Fetch all movies
 async function fetchMovies() {
   try {
     const res = await api.get("/movies/getMovies");
@@ -38,7 +35,6 @@ async function fetchMovies() {
   }
 }
 
-// Add new movie
 async function addMovie() {
   try {
     const res = await api.post("/movies/addMovie", newMovie);
@@ -53,13 +49,11 @@ async function addMovie() {
   }
 }
 
-// Prepare update form
 function editMovie(movie) {
   Object.assign(updateMovieData, movie);
   showUpdateForm.value = true;
 }
 
-// Update movie
 async function updateMovie() {
   try {
     const res = await api.patch(`/movies/updateMovie/${updateMovieData._id}`, {
@@ -80,7 +74,6 @@ async function updateMovie() {
   }
 }
 
-// Delete movie
 async function deleteMovie(id) {
   if (!confirm("Are you sure you want to delete this movie?")) return;
 
@@ -130,12 +123,11 @@ onMounted(fetchMovies);
           <textarea v-model="newMovie.description" class="form-control" placeholder="Description"></textarea>
         </div>
         <div class="col-12">
-          <button class="btn btn-primary" @click="addMovie">Save Movie</button>
+          <button class="btn btn-primary" @click="addMovie">Add Movie</button>
         </div>
       </div>
     </div>
 
-    <!-- Update Movie Form -->
     <div v-if="showUpdateForm" class="card mb-4 p-3 border-warning">
       <h5>Update Movie</h5>
       <div class="row g-3">
@@ -161,7 +153,6 @@ onMounted(fetchMovies);
       </div>
     </div>
 
-    <!-- Movies Table -->
     <table class="table table-striped table-bordered">
       <thead class="table-light">
         <tr>

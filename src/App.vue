@@ -5,7 +5,6 @@ import NavbarComponent from './components/NavbarComponent.vue';
 
 const global = useGlobalStore();
 
-// On app mount, sync user from localStorage to Pinia
 onBeforeMount(() => {
   if (localStorage.getItem("token")) {
     global.user.token = localStorage.getItem("token");

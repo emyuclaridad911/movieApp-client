@@ -2,14 +2,13 @@ import { defineStore } from 'pinia';
 import { reactive } from 'vue';
 
 export const useGlobalStore = defineStore('global', () => {
-  // --- User state ---
+
   const user = reactive({
     token: localStorage.getItem('token') || null,
     email: localStorage.getItem('email') || null,
     isAdmin: localStorage.getItem('isAdmin') === 'true' || false,
   });
 
-  // --- User functions ---
   function setUserSession({ token, email, isAdmin }) {
     user.token = token;
     user.email = email;

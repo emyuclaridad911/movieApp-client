@@ -10,7 +10,6 @@ const global = useGlobalStore();
 const router = useRouter();
 const notyf = new Notyf();
 
-// Fetch movies from backend
 async function fetchMovies() {
   try {
     const res = await api.get("/movies/getMovies");
@@ -21,12 +20,10 @@ async function fetchMovies() {
   }
 }
 
-// Navigate to movie details page
 function viewMovie(id) {
   router.push({ path: `/movie/${id}` });
 }
 
-// Fetch movies on mount
 onMounted(() => {
   if (!global.user.token) {
     notyf.error("You must be logged in to view movies.");
