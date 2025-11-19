@@ -94,7 +94,7 @@ onMounted(fetchMovies);
   <div class="container mt-5">
     <h1 class="mb-4">Admin Dashboard</h1>
 
-    <!-- Add Movie Button -->
+    <!-- Add Movie Button with id addMovie -->
     <button
       id="addMovie"
       class="btn btn-success mb-3 me-2"
@@ -170,7 +170,7 @@ onMounted(fetchMovies);
           <td>{{ movie.director }}</td>
           <td>{{ movie.year }}</td>
           <td>{{ movie.genre }}</td>
-          <td>{{ movie.description }}</td>
+          <td class="description-cell">{{ movie.description }}</td>
           <td>
             <button class="btn btn-sm btn-warning me-2" @click="editMovie(movie)">Update</button>
             <button class="btn btn-sm btn-danger" @click="deleteMovie(movie._id)">Delete</button>
@@ -185,4 +185,14 @@ onMounted(fetchMovies);
 textarea {
   resize: none;
 }
+
+td.description-cell {
+  max-width: 300px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
+
